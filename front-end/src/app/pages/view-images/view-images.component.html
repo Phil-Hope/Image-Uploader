@@ -1,0 +1,187 @@
+<div class="container" style="padding-bottom: 65px;">
+  <p class="text-center">Image Data</p>
+  <div class="row">
+    <div class="col-lg-6 col-styling">
+      <div class="card card-styling">
+        <div class="card-body">
+          <caption>PNG</caption>
+          <div class="table-responsive">
+            <table class="table caption-top table-hover">
+              <thead>
+              <tr>
+                <th scope="col">File Name</th>
+                <th scope="col">Image Size</th>
+                <th scope="col">Date & Time Uploaded</th>
+                <th scope="col">Preview</th>
+              </tr>
+              </thead>
+              <ng-container *ngIf="imageData else spinner">
+              <tbody>
+              <ng-container *ngFor="let image of imageData">
+                <tr *ngIf="image.fileType === 'png' || image.fileType === 'PNG'">
+                  <td>{{image.fileName}}</td>
+                  <td>{{image.imageSize}}<strong> bytes</strong></td>
+                  <td>{{image.timeStamp | date: 'dd/MM HH:MM a'}}</td>
+                  <td>
+                    <button class="btn btn-primary btn-sm"
+                            (click)="setImageUrl(image.fileName!);
+                            openModal(template)">View</button>
+                  </td>
+                </tr>
+              </ng-container>
+              </tbody>
+              </ng-container>
+              <ng-template #spinner>
+                <div class="d-flex align-items-center">
+                  <strong>Loading...</strong>
+                  <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                </div>
+              </ng-template>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-styling">
+      <div class="card card-styling">
+        <div class="card-body">
+          <caption>JPEG/JPG</caption>
+          <div class="table-responsive">
+            <table class="table caption-top table-hover">
+              <thead>
+              <tr>
+                <th scope="col">File Name</th>
+                <th scope="col">Image Size</th>
+                <th scope="col">Date & Time Uploaded</th>
+                <th scope="col">Preview</th>
+              </tr>
+              </thead>
+              <ng-container *ngIf="imageData else spinner">
+                <tbody>
+                <ng-container *ngFor="let image of imageData">
+                  <tr *ngIf="image.fileType === 'jpeg' || image.fileType === 'jpg'">
+                    <td>{{image.fileName}}</td>
+                    <td>{{image.imageSize}}<strong> bytes</strong></td>
+                    <td>{{image.timeStamp | date: 'dd/MM HH:MM a'}}</td>
+                    <td class="text-center">
+                      <button class="btn btn-primary btn-sm"
+                              (click)="setImageUrl(image.fileName!);
+                              openModal(template)">View</button>
+                    </td>
+                  </tr>
+                </ng-container>
+                </tbody>
+              </ng-container>
+              <ng-template #spinner>
+                <div class="d-flex align-items-center">
+                  <strong>Loading...</strong>
+                  <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                </div>
+              </ng-template>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title">Image Preview</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <img src="{{imageUrl}}" alt="#" style="width: 100%; height: 100%">
+      <a class="btn btn-success" [href]="[imageUrl]" download>
+        Full Screen
+      </a>
+    </div>
+  </ng-template>
+
+  <div class="row">
+    <div class="col-lg-6 col-styling">
+      <div class="card card-styling">
+        <div class="card-body">
+          <caption>GIF</caption>
+          <div class="table-responsive">
+            <table class="table caption-top table-hover">
+              <thead>
+              <tr>
+                <th scope="col">File Name</th>
+                <th scope="col">Image Size</th>
+                <th scope="col">Date & Time Uploaded</th>
+                <th scope="col">Preview</th>
+              </tr>
+              </thead>
+              <ng-container *ngIf="imageData else spinner">
+                <tbody>
+                <ng-container *ngFor="let image of imageData">
+                  <tr *ngIf="image.fileType === 'gif'">
+                    <td>{{image.fileName}}</td>
+                    <td>{{image.imageSize}}<strong> bytes</strong></td>
+                    <td>{{image.timeStamp | date: 'dd/MM HH:MM a'}}</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm"
+                              (click)="setImageUrl(image.fileName!);
+                              openModal(template)">View</button>
+                    </td>
+                  </tr>
+                </ng-container>
+                </tbody>
+              </ng-container>
+              <ng-template #spinner>
+                <div class="d-flex align-items-center">
+                  <strong>Loading...</strong>
+                  <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                </div>
+              </ng-template>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-styling">
+      <div class="card card-styling">
+        <div class="card-body">
+          <div class="table-responsive">
+            <caption>SVG</caption>
+            <table class="table caption-top table-hover">
+              <thead>
+              <tr>
+                <th scope="col">File Name</th>
+                <th scope="col">Image Size</th>
+                <th scope="col">Date & Time Uploaded</th>
+                <th scope="col">Preview</th>
+              </tr>
+              </thead>
+              <ng-container *ngIf="imageData else spinner">
+                <tbody>
+                <ng-container *ngFor="let image of imageData">
+                  <tr *ngIf="image.fileType === 'svg'">
+                    <td>{{image.fileName}}</td>
+                    <td>{{image.imageSize}}<strong> bytes</strong></td>
+                    <td>{{image.timeStamp | date: 'dd/MM HH:MM a'}}</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm"
+                              (click)="setImageUrl(image.fileName!);
+                              openModal(template)">View</button>
+                    </td>
+                  </tr>
+                </ng-container>
+                </tbody>
+              </ng-container>
+              <ng-template #spinner>
+                <div class="d-flex align-items-center">
+                  <strong>Loading...</strong>
+                  <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                </div>
+              </ng-template>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

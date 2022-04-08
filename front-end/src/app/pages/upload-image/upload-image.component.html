@@ -1,0 +1,16 @@
+<div class="container">
+  <img src="https://media.publit.io/file/upload.png" alt="upload image" id="img"/>
+  <div class="mb-3 text-center">
+    <p>Upload Image</p>
+    <form [formGroup]="form" (ngSubmit)="uploadImage();">
+      <br />
+      <input type="file" placeholder="Please choose a file" formControlName="file" (change)="onFileChange($event)" class="btn btn-outline-info" id="img-input">
+      <button *ngIf="isLoading == false" type="submit" id="btn" class="btn btn-outline-success">Upload</button>
+      <br />
+      <div class="spinner-border" role="status" *ngIf="isLoading == true">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </form>
+  </div>
+</div>
+

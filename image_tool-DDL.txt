@@ -1,0 +1,13 @@
+create table images
+(
+    Id        char(36)                            not null
+        primary key,
+    fileName  varchar(255)                        not null,
+    imageSize double                              not null,
+    timestamp timestamp default CURRENT_TIMESTAMP not null,
+    filePath  varchar(255)                        null,
+    fileType  varchar(5)                          null,
+    constraint images_Id_uindex
+        unique (Id)
+);
+
