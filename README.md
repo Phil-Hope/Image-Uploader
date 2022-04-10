@@ -1,4 +1,4 @@
-﻿# Coding Challenge
+﻿# Image Uploader
 
 ####  Requires
 - angular cli
