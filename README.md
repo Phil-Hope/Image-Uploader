@@ -7,7 +7,7 @@
 - MySQL
 
 #### Description
-The frontend and backend have been developed completely decoupled from each other. I favour this approach as it allows other front applications to consume also consume this RESTful API.
+The frontend and backend have been developed completely decoupled from each other. I favour this approach as it allows other front applications to also consume from it.
 
 Development of the front-end was done using WebStorm IDE.
 Development of the back-end was done using Visual Studio 2019.
